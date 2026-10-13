@@ -1,0 +1,20 @@
+{
+  "name": "safe-island-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "node --check src/scene.js && node --check src/audio.js && node --check src/main.js && node --check src/interactions.js && node --check src/trail.js && node --check src/trail-effects.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "gsap": "3.12.5",
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "vite": "8.3.4"
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#7cbf68" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="/src/styles.css">
+<link rel="icon" href="data:,">
+<title>安全岛 · Sanctuary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+SC:wght@200;300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+
+</head>
+<body class="pre-entry">
+<canvas id="scene"></canvas>
+
+<audio id="bgm" src="/sites/safe-island/forest-stream.mp3" loop preload="auto"></audio>
+
+<div id="ui">
+
+  <!-- TOP LEFT — masthead -->
+  <header class="masthead">
+    <h1>Sanctuary</h1>
+    <div class="cn">安 全 岛</div>
+    <div class="caption">呼 吸 · 聆 听 · 放 松</div>
+  </header>
+
+  <!-- TOP RIGHT — handle -->
+  <div class="ig-handle">ig:lawwwmak_</div>
+
+  <!-- Breathing orb — paced like a natural human breath (~10s cycle) -->
+  <div class="breath-orb" aria-hidden="true">
+    <div class="ring ring-3"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-1"></div>
+    <div class="core"></div>
+    <div class="phase">吸 气</div>
+  </div>
+
+  <!-- Hidden legacy controls — kept as no-op anchors for JS handlers -->
+  <button id="musicBtn" class="legacy-hidden" aria-hidden="true" tabindex="-1"></button>
+  <button id="fsBtn"    class="legacy-hidden" aria-hidden="true" tabindex="-1"></button>
+  <button id="gyroBtn"  class="legacy-hidden" aria-hidden="true" tabindex="-1"></button>
+  <button id="moodBtn"  class="legacy-hidden" aria-hidden="true" tabindex="-1"></button>
+  <span   id="fsLabel"  class="legacy-hidden" aria-hidden="true"></span>
+  <span   id="enterCn"  class="legacy-hidden" aria-hidden="true"></span>
+
+</div>
+
+<!-- Player lives OUTSIDE #ui so it is never hidden by overlay tweens -->
+<div class="player" id="player">
+  <svg class="note-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 18 V6 L19 4 V16"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6.5" cy="18" r="2.5" stroke-linecap="round"/>
+    <circle cx="16.5" cy="16" r="2.5" stroke-linecap="round"/>
+  </svg>
+  <div class="meta">
+    <div class="title-en">森 林 小 溪 · 白 噪 音</div>
+    <div class="status"><span class="dot"></span><span id="playerStatus">点 击 播 放</span></div>
+  </div>
+  <div class="spectrum" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <button class="play-btn" id="playBtn" aria-label="Play">
+    <svg id="playIcon" viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg>
+  </button>
+</div>
+
+<div class="vignette" id="vignette"></div>
+<div class="hint" id="hint">点 击 进 入 安 全 岛</div>
+<div class="toast" id="toast"></div>
+
+<!-- Entry ceremony overlay — shown on first visit, hidden after click -->
+<div class="entry-veil" id="entryVeil"></div>
+<div class="entry" id="entry">
+  <button class="entry-cta" id="entryCta" aria-label="Enter Sanctuary">
+    <span class="entry-cta-text">这 里 没 有 世 界 的 噪 音</span>
+    <span class="entry-cta-arrow">→</span>
+  </button>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
